@@ -16,18 +16,18 @@ O intuito desse Workshop será mostrar ferramentas que permitem a reprodutibilid
 
 Entre os tópicos tratados teremos:
 
--Quais são os conceitos necessários para a reprodução da pesquisa computacional
--Versionamento para ambiente, bibliotecas, código, dados e experimentos
--Ferramentas mais utilizadas (docker, conda, git, DVC, Mlflow, Drake entre outras)
+* Quais são os conceitos necessários para a reprodução da pesquisa computacional
+* Versionamento para ambiente, bibliotecas, código, dados e experimentos
+* Ferramentas mais utilizadas (docker, conda, git, DVC, Mlflow, Drake entre outras)
 
 O workshop será divido em duas etapas:
--uma apresentação de meia hora com os conceitos principais
--uma parte aplicada com uma introdução desses paradigmas nas linguagens R e Python, com duração prevista de meia hora. Nessa parte, teremos a reprodução de um experimento.
+* uma apresentação de meia hora com os conceitos principais
+* uma parte aplicada com uma introdução desses paradigmas nas linguagens R e Python, com duração prevista de meia hora. Nessa parte, teremos a reprodução de um experimento.
 
 Para os interessados na parte aplicada, será necessário:
--trazer seu próprio notebook
--ter acesso à internet nas dependências da FEEC
--seguir as instruções da página abaixo antes do workshop
+* trazer seu próprio notebook
+* ter acesso à internet nas dependências da FEEC
+* seguir as instruções da página abaixo antes do workshop
 
 https://github.com/nettoyoussef/science-reproducibility
 

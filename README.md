@@ -1,8 +1,8 @@
 # Workshop sobre reprodutibilidade em Pesquisa Computacional - Unicamp (16/08)
 
-This repository contains the files used for a workshop at Unicamp (Brasil) about reproducibility in Computational Research.
 
 
+**This repository contains files used for a workshop at Unicamp (Brasil) about reproducibility in Computational Research.**
 
 
 

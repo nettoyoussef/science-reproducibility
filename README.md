@@ -1,11 +1,12 @@
-# science-reproducibility
+# Workshop sobre reprodutibilidade em Pesquisa Computacional - Unicamp (16/08)
+
 This repository contains the files used for a workshop at Unicamp (Brasil) about reproducibility in Computational Research.
 
 
-Workshop sobre reprodutibilidade em Pesquisa Computacional - Unicamp (16/08)
 
 
-A questão sobre a reprodutibilidade na ciência tem sido considerado um problema importante e endêmico entre pesquisadores modernos. Segundo pesquisa feita pela Nature em 2016 com 1500 cientistas, 70% dos entrevistados foram incapazes de replicar experimentos de outros grupos de pesquisa, e mais da metade foi incapaz de reproduzir seus próprios resultados.
+
+A questão sobre a reprodutibilidade na ciência tem sido considerado um problema importante e endêmico entre pesquisadores modernos. Segundo pesquisa feita pela [Nature](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970) em 2016 com 1500 cientistas, 70% dos entrevistados foram incapazes de replicar experimentos de outros grupos de pesquisa, e mais da metade foi incapaz de reproduzir seus próprios resultados.
 
 Esse é um problema que afeta o cerne do método científico, já que impede a validação de teorias de forma independente, e com isso, adultera o processo de criação de consensos. 
 

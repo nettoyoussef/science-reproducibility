@@ -32,3 +32,177 @@ Para os interessados na parte aplicada, será necessário:
 https://github.com/nettoyoussef/science-reproducibility
 
 As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira). Nela, constarão um passo a passo da instalação dos programas e códigos necessários para reprodução do experimento que será tratado. É bastante importante que os programas sejam instalados com antecedência visto que não haverá tempo hábil para realizar essa etapa durante o workshop.
+
+
+# Requerimentos para parte prática - (atualizado 14/08/2019)
+
+- Sistema operacional Linux (é possível rodar Docker e Git em Windows/MAC OS, entretanto o tutorial para essas plataformas foge do escopo do Workshop).
+- Caso seu sistema operacional não seja Linux, você talvez ainda consiga acompanhar o workshop se já tiver experiência com powershell e git.
+- Instalar a versão estável mais recente do [Docker](https://docs.docker.com/install/) para sua plataforma.
+- Instalar a versão estável mais recente do [Docker-compose](https://docs.docker.com/compose/install/) para sua plataforma.
+- Instalar a versão estável mais recente do [git](https://git-scm.com/downloads) para sua plataforma.
+- Caso você queira rodar análises com sua placa de vídeo, instale [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)(não é necessário para o workshop).
+- Ter pelo menos 15 gb de espaco livre no seu diretorio principal (root). Usualmente se requer menos, mas como trabalharemos com imagens de propósito multiuso, será necessário mais espaço.
+
+# Passos para rodar o experimento (ver mais detalhes abaixo)
+1. Baixar uma cópia desse repositório para o diretório em que voce quer rodar o experimento.
+2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
+3. Montar e subir imagens.
+4. Checar se imagens estão acessíveis no seu browser de preferência
+
+## 1. - Cópia do repositório
+
+Caso você já tenha instalado o git de forma bem-sucedida, você pode copiar este repositório direto da sua linha de comando. Basta escolher um diretório onde você quer salvar
+o projeto e digitar:
+
+```Shell
+$ cd caminho/diretorio/
+$ git clone https://github.com/nettoyoussef/science-reproducibility
+```
+
+Este comando irá criar um novo diretório chamado `science-reproducibility` dentro da pasta escolhida. É possível checar se sua cópia confere com o a versão da página 
+fazendo:
+
+```Shell
+$ cd caminho/diretorio/science-reproducibility
+$ git status
+```
+
+Se tudo estiver correto aparecerá a mensagem:
+
+```
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+```
+
+Caso você não tenha instalado o git, é possível baixar uma versão zip do repositório clicando em `clone or download` no ícone verde na parte superior direita da página.
+
+
+## 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
+
+Uma vez na pasta do repositório, abra o arquivo .env na pasta science-reproducibility/Dockerfiles/. Caso você não veja o arquivo, clique em exibir pastas e arquivos ocultos no seu gerenciador de janelas.
+
+Dentro desse arquivo, voce verá
+
+```
+#Project Directory
+PROJECT_DIR=/home/eliasy/ssd_sata/Unicamp/Eletrica Unicamp/Apresentacoes/science-reproducibility/
+
+#Usuario - para logins
+LOGIN_USER=science-repro
+
+#Senha para acesso ao Jupyter Notebook
+JUPYTER_PASSWORD=science-repro-senha
+
+#Senha para acesso ao Rstudio
+RSTUDIO_PWD=science-repro-senha
+```
+
+Atualize os caminho do diretorio para a pasta do diretório, incluindo `science-reproducibility`. Salve as alterações. Mantenha as senhas de usuário por hora.
+
+
+## 3. Montar imagens.
+
+
+Para montar as imagens contidas nas dockerfiles, abra sua linha de comando e digite:
+
+```Shell
+$ cd caminho/diretorio/science-reproducibility/Dockerfiles
+$ Docker-compose config
+```
+
+Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam texto excluído da saída)
+
+```
+ ...
+  mlflow_tracker:
+    build:
+        ...
+    environment:
+      JUPYTER_PASSWORD: science-repro-senha
+      LOGIN_USER: science-repro
+      PROJECT_DIR: caminho/diretorio/science-reproducibility
+      RSTUDIO_PWD: science-repro-senha
+        ....
+    volumes:
+    - caminho/diretorio/science-reproducibility/experiments:/home/science-repro/experiments:rw
+  python:
+    ...
+    environment:
+      JUPYTER_PASSWORD: science-repro-senha
+      JUPYTER_TOKEN: science-repro-senha
+      LOGIN_USER: science-repro
+      PROJECT_DIR: caminho/diretorio/science-reproducibility
+      RSTUDIO_PWD: science-repro-senha
+    ...
+    volumes:
+    - caminho/diretorio/science-reproducibility:/home/science-repro:rw
+  r:
+    build:
+      args:
+        PASSWORD: science-repro-senha
+        USER: science-repro
+      ...
+    environment:
+      JUPYTER_PASSWORD: science-repro-senha
+      LOGIN_USER: science-repro
+      PROJECT_DIR: caminho/diretorio/science-reproducibility
+      RSTUDIO_PWD: science-repro-senha
+    ...
+    volumes:
+    - caminho/diretorio/science-reproducibility:/home/science-repro:rw
+ ...   
+```
+
+Confira se os caminhos estão atualizados para o seu diretório, e se as senhas constam como no arquivo `.env`.
+Se tudo estiver correto, execute:
+
+```Shell
+$ Docker-compose build --no-cache
+```
+
+Este comando irá baixar e construir as imagens necessárias para construção desse experimento.
+Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários minutos (~ 28 minutos na minha máquina). Caso voce encontre problemas durante a execução, cancele a geração da imagem e tente novamente com o cache:
+
+```Shell
+$ Docker-compose build
+```
+
+Se tudo rodar sem erros, voce pode subir as imagens com o comando:
+
+```Shell
+$ Docker-compose up
+```
+
+Este último comando irá criar três containers contendo diferentes aplicações para R e python.
+Eles estarão acessíveis no seu caminho local nas portas 8787, 8888 e 5000.
+
+```
+http://127.0.0.1:8787
+ou
+http://localhost:8787/
+e etc
+```
+
+Acesse os containers digitando esse caminho no seu browser de preferência (Firefox, Chrome etc).
+Para ver os containers criados digite na sua linha de comando:
+
+```Shell
+$ sudo docker ps -a
+```
+
+Para ver as imagens criadas, sua data e tamanho:
+
+```Shell
+$ sudo docker images
+```
+
+
+
+
+
+
+
+

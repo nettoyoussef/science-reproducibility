@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+# container for Jupyter Notebook
+  python:
+    env_file: .env
+    #build: 
+    #  context: .
+    image: jupyter/tensorflow-notebook:2ce7c06a61a1    
+    volumes:
+      - "${PROJECT_DIR}:/home/${LOGIN_USER}/"
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_PASSWORD}
+    command:
+      jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root --notebook-dir=/home/science-repro
+            
+
+# container for Mlflow 
+  mlflow_tracker:
+    env_file: .env
+    build:
+      context: .
+      dockerfile: mlflow/Dockerfile 
+    image: science-repro-mlflow
+    expose:
+      - "5000" 
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - "${PROJECT_DIR}/Experiments/:/home/${LOGIN_USER}/Experiments/"
+
+    command:
+      mlflow server
+        --host 0.0.0.0
+        --port 5000
+        --backend-store-uri "/home/${LOGIN_USER}/Experiments/"
+        
+# container for Rstudio
+  r:
+    env_file: .env
+    build:
+      args:    
+        - USER=${LOGIN_USER}
+        - PASSWORD=${RSTUDIO_PWD}
+      context: ./R
+      dockerfile: ./Dockerfile 
+    image: science-repro-r
+    volumes:
+      - "${PROJECT_DIR}:/home/${LOGIN_USER}/"    
+    expose:
+      - "8787" 
+    ports:
+      - "8787:8787"
+    command:
+        /usr/lib/rstudio-server/bin/rserver 
+            --server-daemonize=0
+        

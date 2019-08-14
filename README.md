@@ -20,7 +20,7 @@ Entre os tópicos tratados teremos:
 * Versionamento para ambiente, bibliotecas, código, dados e experimentos
 * Ferramentas mais utilizadas (docker, conda, git, DVC, Mlflow, Drake entre outras)
 
-O workshop será divido em duas etapas:
+O workshop será dividido em duas etapas:
 * uma apresentação de meia hora com os conceitos principais
 * uma parte aplicada com uma introdução desses paradigmas nas linguagens R e Python, com duração prevista de meia hora. Nessa parte, teremos a reprodução de um experimento.
 
@@ -46,7 +46,7 @@ As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira)
 
 ## Passos para rodar o experimento (ver mais detalhes abaixo)
 1. Baixar uma cópia desse repositório para o diretório em que voce quer rodar o experimento.
-2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
+2. Atualizar caminhos dos diretórios no arquivo `./Dockerfiles/.env`
 3. Montar e subir imagens.
 4. Checar se imagens estão acessíveis no seu browser de preferência
 
@@ -78,7 +78,7 @@ nothing to commit, working tree clean
 Caso você não tenha instalado o git, é possível baixar uma versão zip do repositório clicando em `clone or download` no ícone verde na parte superior direita da página.
 
 
-### 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
+### 2. Atualizar caminhos dos diretórios no arquivo `./Dockerfiles/.env`
 
 Uma vez na pasta do repositório, abra o arquivo `.env` na pasta `science-reproducibility/Dockerfiles/`. Caso você não veja o arquivo, clique em exibir pastas e arquivos ocultos no seu gerenciador de janelas.
 
@@ -161,7 +161,9 @@ Se tudo estiver correto, execute:
 $ Docker-compose build --no-cache
 ```
 
-Este comando irá baixar e construir as imagens necessárias para construção desse experimento.
+Este comando irá baixar e construir as imagens necessárias para construção desse experimento.  
+
+
 Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários minutos (~ 28 minutos na minha máquina). Caso voce encontre problemas durante a execução, cancele a geração da imagem (`Ctrl+C`) e tente novamente com o cache:
 
 ```Shell

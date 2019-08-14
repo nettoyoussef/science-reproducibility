@@ -52,16 +52,14 @@ As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira)
 
 ## 1. - Cópia do repositório
 
-Caso você já tenha instalado o git de forma bem-sucedida, você pode copiar este repositório direto da sua linha de comando. Basta escolher um diretório onde você quer salvar
-o projeto e digitar:
+Caso você já tenha instalado o git de forma bem-sucedida, você pode copiar este repositório direto da sua linha de comando. Basta escolher um diretório onde você quer salvar o projeto e digitar:
 
 ```Shell
 $ cd caminho/diretorio/
 $ git clone https://github.com/nettoyoussef/science-reproducibility
 ```
 
-Este comando irá criar um novo diretório chamado `science-reproducibility` dentro da pasta escolhida. É possível checar se sua cópia confere com o a versão da página 
-fazendo:
+Este comando irá criar um novo diretório chamado `science-reproducibility` dentro da pasta escolhida. É possível checar se sua cópia confere com a versão da página fazendo:
 
 ```Shell
 $ cd caminho/diretorio/science-reproducibility
@@ -82,13 +80,13 @@ Caso você não tenha instalado o git, é possível baixar uma versão zip do re
 
 ## 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
 
-Uma vez na pasta do repositório, abra o arquivo .env na pasta science-reproducibility/Dockerfiles/. Caso você não veja o arquivo, clique em exibir pastas e arquivos ocultos no seu gerenciador de janelas.
+Uma vez na pasta do repositório, abra o arquivo `.env` na pasta `science-reproducibility/Dockerfiles/`. Caso você não veja o arquivo, clique em exibir pastas e arquivos ocultos no seu gerenciador de janelas.
 
-Dentro desse arquivo, voce verá
+Dentro desse arquivo, voce verá:
 
 ```
 #Project Directory
-PROJECT_DIR=/home/eliasy/ssd_sata/Unicamp/Eletrica Unicamp/Apresentacoes/science-reproducibility/
+PROJECT_DIR=/home/.../path/to/science-reproducibility/
 
 #Usuario - para logins
 LOGIN_USER=science-repro
@@ -100,7 +98,7 @@ JUPYTER_PASSWORD=science-repro-senha
 RSTUDIO_PWD=science-repro-senha
 ```
 
-Atualize os caminho do diretorio para a pasta do diretório, incluindo `science-reproducibility`. Salve as alterações. Mantenha as senhas de usuário por hora.
+Atualize os caminho do arquivo para a pasta escolhida, incluindo `science-reproducibility`. Salve às alterações. Mantenha as senhas de usuário por hora.
 
 
 ## 3. Montar imagens.
@@ -113,7 +111,7 @@ $ cd caminho/diretorio/science-reproducibility/Dockerfiles
 $ Docker-compose config
 ```
 
-Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam texto excluído da saída)
+Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam texto excluído da saída):
 
 ```
  ...
@@ -164,7 +162,7 @@ $ Docker-compose build --no-cache
 ```
 
 Este comando irá baixar e construir as imagens necessárias para construção desse experimento.
-Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários minutos (~ 28 minutos na minha máquina). Caso voce encontre problemas durante a execução, cancele a geração da imagem e tente novamente com o cache:
+Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários minutos (~ 28 minutos na minha máquina). Caso voce encontre problemas durante a execução, cancele a geração da imagem (`Ctrl+C`) e tente novamente com o cache:
 
 ```Shell
 $ Docker-compose build
@@ -176,7 +174,7 @@ Se tudo rodar sem erros, voce pode subir as imagens com o comando:
 $ Docker-compose up
 ```
 
-Este último comando irá criar três containers contendo diferentes aplicações para R e python.
+Este último comando irá criar três containers contendo diferentes aplicações para R e Python.
 Eles estarão acessíveis no seu caminho local nas portas 8787, 8888 e 5000.
 
 ```

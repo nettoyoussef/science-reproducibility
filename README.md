@@ -111,7 +111,7 @@ $ cd caminho/diretorio/science-reproducibility/Dockerfiles
 $ Docker-compose config
 ```
 
-Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam texto excluído da saída):
+Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam informação omitida):
 
 ```
  ...

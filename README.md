@@ -6,11 +6,11 @@
 
 
 
-A questão sobre a reprodutibilidade na ciência tem sido considerado um problema importante e endêmico entre pesquisadores modernos. Segundo pesquisa feita pela [Nature](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970) em 2016 com 1500 cientistas, 70% dos entrevistados foram incapazes de replicar experimentos de outros grupos de pesquisa, e mais da metade foi incapaz de reproduzir seus próprios resultados.
+A questão sobre a reprodutibilidade na ciência tem sido considerada um problema importante e endêmico entre pesquisadores modernos. Segundo pesquisa feita pela [Nature](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970) em 2016 com 1500 cientistas, 70% dos entrevistados foram incapazes de replicar experimentos de outros grupos de pesquisa, e mais da metade foi incapaz de reproduzir seus próprios resultados.
 
-Esse é um problema que afeta o cerne do método científico, já que impede a validação de teorias de forma independente, e com isso, adultera o processo de criação de consensos. 
+Esse é um problema que afeta o cerne do método científico, já que impede a validação de teorias de forma independente e, com isso, adultera o processo de criação de consensos. 
 
-Especialmente para as áreas baseadas em pesquisa empírica, a incapacidade de replicar análises dá margem para que fatores como interesses econômicos, viéses pessoais ou status influenciem o processo de transformação de pesquisa em conhecimento científico.
+Para as áreas baseadas no empirismo, a incapacidade de replicar análises dá margem para que fatores como interesses econômicos, viéses pessoais ou status influenciem o processo de transformação de pesquisa em conhecimento científico.
 
 O intuito desse Workshop será mostrar ferramentas que permitem a reprodutibilidade de pesquisa computacional e análises sobre dados já coletados ou abertos. Particularmente para as áreas de ciência da computação e ciências sociais, o teste de hipóteses sobre dados secundários e a comparação de novos algorítmos constitui uma área fundamental da pesquisa.
 
@@ -34,7 +34,7 @@ https://github.com/nettoyoussef/science-reproducibility
 As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira). Nela, constarão um passo a passo da instalação dos programas e códigos necessários para reprodução do experimento que será tratado. É bastante importante que os programas sejam instalados com antecedência visto que não haverá tempo hábil para realizar essa etapa durante o workshop.
 
 
-# Requerimentos para parte prática - (atualizado 14/08/2019)
+## Requerimentos para parte prática - (atualizado 14/08/2019)
 
 - Sistema operacional Linux (é possível rodar Docker e Git em Windows/MAC OS, entretanto o tutorial para essas plataformas foge do escopo do Workshop).
 - Caso seu sistema operacional não seja Linux, você talvez ainda consiga acompanhar o workshop se já tiver experiência com powershell e git.
@@ -44,13 +44,13 @@ As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira)
 - Caso você queira rodar análises com sua placa de vídeo, instale [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)(não é necessário para o workshop).
 - Ter pelo menos 15 gb de espaco livre no seu diretorio principal (root). Usualmente se requer menos, mas como trabalharemos com imagens de propósito multiuso, será necessário mais espaço.
 
-# Passos para rodar o experimento (ver mais detalhes abaixo)
+## Passos para rodar o experimento (ver mais detalhes abaixo)
 1. Baixar uma cópia desse repositório para o diretório em que voce quer rodar o experimento.
 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
 3. Montar e subir imagens.
 4. Checar se imagens estão acessíveis no seu browser de preferência
 
-## 1. - Cópia do repositório
+### 1. - Cópia do repositório
 
 Caso você já tenha instalado o git de forma bem-sucedida, você pode copiar este repositório direto da sua linha de comando. Basta escolher um diretório onde você quer salvar o projeto e digitar:
 
@@ -78,7 +78,7 @@ nothing to commit, working tree clean
 Caso você não tenha instalado o git, é possível baixar uma versão zip do repositório clicando em `clone or download` no ícone verde na parte superior direita da página.
 
 
-## 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
+### 2. Atualizar caminhos dos diretórios no arquivo ./Dockerfiles/.env
 
 Uma vez na pasta do repositório, abra o arquivo `.env` na pasta `science-reproducibility/Dockerfiles/`. Caso você não veja o arquivo, clique em exibir pastas e arquivos ocultos no seu gerenciador de janelas.
 
@@ -101,7 +101,7 @@ RSTUDIO_PWD=science-repro-senha
 Atualize os caminho do arquivo para a pasta escolhida, incluindo `science-reproducibility`. Salve às alterações. Mantenha as senhas de usuário por hora.
 
 
-## 3. Montar imagens.
+### 3. Montar imagens.
 
 
 Para montar as imagens contidas nas dockerfiles, abra sua linha de comando e digite:
@@ -167,6 +167,8 @@ Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários mi
 ```Shell
 $ Docker-compose build
 ```
+
+### 4. Checar imagens.
 
 Se tudo rodar sem erros, voce pode subir as imagens com o comando:
 

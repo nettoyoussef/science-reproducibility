@@ -1,3 +1,4 @@
+#Source: https://github.com/mlflow/mlflow/tree/master/examples/sklearn_elasticnet_wine
 # The data set used in this example is from http://archive.ics.uci.edu/ml/datasets/Wine+Quality
 # P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
 # Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
@@ -42,7 +43,7 @@ if __name__ == "__main__":
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
     mlflow.tracking.set_tracking_uri("/home/science-repro/Experiments/")
-    mlflow.set_experiment(experiment_name = "python_flower")
+    mlflow.set_experiment(experiment_name = "python_wine")
 
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)

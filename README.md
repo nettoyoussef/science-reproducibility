@@ -205,9 +205,9 @@ $ sudo docker images
 
 ### 5. Rodar os experimentos
 
-Dentro da pasta `Code` constam três experimentos. O primeiro, chamado de [python_example_1.py](https://machinelearningmastery.com/machine-learning-in-python-step-by-step/) visa demonstrar como é o desenvolvimento dentro de um container. Ao rodá-lo dentro da IDE do Rstudio, caso você esteja com acesso a internet, várias figuras serão geradas usando o famoso banco de dados Íris.  
+Dentro da pasta `Code` constam três experimentos. O primeiro, chamado de [python_example_1.py](https://machinelearningmastery.com/machine-learning-in-python-step-by-step/), visa demonstrar como é o desenvolvimento dentro de um container. Ao rodá-lo dentro da IDE do Rstudio, caso você esteja com acesso a internet, várias figuras serão geradas usando o famoso banco de dados Íris.  
 
-O segundo experimento, dentro da pasta python_mlflow, representa o versionamento de um experimento usando Python e [Mlflow](https://mlflow.org/). O código usa o banco de dados `wine-quality` contido na pasta `Data`.
+O segundo experimento, dentro da pasta `python_mlflow`, representa o versionamento de um experimento usando Python e [Mlflow](https://mlflow.org/). O código usa o banco de dados `wine-quality` contido na pasta `Data`.
 Ao rodar o [experimento](https://github.com/mlflow/mlflow/tree/master/examples/sklearn_elasticnet_wine), métricas e parâmetros de um classificador serão armazenadas na pasta `Experiments` (atenção, se você mudou o nome de usuário, atualize o caminho da URI de tracking no código com o novo nome), juntamente com um arquivo pkl contendo o modelo. Para visualizá-los na URI do Mlflow, basta ir até `localhost:5000` e atualizar a página.
 
 O terceiro experimento é feito na linguagem R e demonstra o uso de DAGs e cache usando o framework [Drake](https://ropenscilabs.github.io/drake-manual/). O código `make.R` cria um cache, carrega funções, banco de dados e plano de trabalho que, após ser executado, tem como saída um reporte na pasta `Reports`. Para visualizar o DAG gerado, retire o `#` da linha 26 e rode o código de forma iterativa (numa sessão do Rstudio, p.e.). Isso gerará um gráfico de dependências do código.

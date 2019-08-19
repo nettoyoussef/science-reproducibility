@@ -41,14 +41,16 @@ As instruções serão atualizadas nessa página até o dia 14/08 (quarta-feira)
 - Instalar a versão estável mais recente do [Docker](https://docs.docker.com/install/) para sua plataforma.
 - Instalar a versão estável mais recente do [Docker-compose](https://docs.docker.com/compose/install/) para sua plataforma.
 - Instalar a versão estável mais recente do [git](https://git-scm.com/downloads) para sua plataforma.
-- Caso você queira rodar análises com sua placa de vídeo, instale [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)(não é necessário para o workshop).
+- Caso você queira rodar análises com sua placa de vídeo, instale [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) (não é necessário para o workshop).
 - Ter pelo menos 15 gb de espaco livre no seu diretorio principal (root). Usualmente se requer menos, mas como trabalharemos com imagens de propósito multiuso, será necessário mais espaço.
+- Seguir as outras instruções abaixo
 
 ## Passos para rodar o experimento (ver mais detalhes abaixo)
 1. Baixar uma cópia desse repositório para o diretório em que voce quer rodar o experimento.
 2. Atualizar caminhos dos diretórios no arquivo `./Dockerfiles/.env`
 3. Montar e subir imagens.
 4. Checar se imagens estão acessíveis no seu browser de preferência
+5. Rodar os experimentos
 
 ### 1. - Cópia do repositório
 
@@ -108,7 +110,7 @@ Para montar as imagens contidas nas dockerfiles, abra sua linha de comando e dig
 
 ```Shell
 $ cd caminho/diretorio/science-reproducibility/Dockerfiles
-$ Docker-compose config
+$ docker-compose config
 ```
 
 Analise a saída. As variáveis de ambiente devem aparecer como abaixo (note que os ... representam informação omitida):
@@ -158,7 +160,7 @@ Confira se os caminhos estão atualizados para o seu diretório, e se as senhas 
 Se tudo estiver correto, execute:
 
 ```Shell
-$ Docker-compose build --no-cache
+$ docker-compose build --no-cache
 ```
 
 Este comando irá baixar e construir as imagens necessárias para construção desse experimento.  
@@ -167,7 +169,7 @@ Este comando irá baixar e construir as imagens necessárias para construção d
 Aproveite para relaxar e fazer um café, pois esta etapa irá demorar vários minutos (~ 28 minutos na minha máquina). Caso voce encontre problemas durante a execução, cancele a geração da imagem (`Ctrl+C`) e tente novamente com o cache:
 
 ```Shell
-$ Docker-compose build
+$ docker-compose build
 ```
 
 ### 4. Checar imagens.
@@ -175,7 +177,7 @@ $ Docker-compose build
 Se tudo rodar sem erros, voce pode subir as imagens com o comando:
 
 ```Shell
-$ Docker-compose up
+$ docker-compose up
 ```
 
 Este último comando irá criar três containers contendo diferentes aplicações para R e Python.
@@ -200,6 +202,18 @@ Para ver as imagens criadas, sua data e tamanho:
 ```Shell
 $ sudo docker images
 ```
+
+### 5. Rodar os experimentos
+
+Dentro da pasta `Code` constam três experimentos. O primeiro, chamado de [python_example_1.py](https://machinelearningmastery.com/machine-learning-in-python-step-by-step/) visa demonstrar como é o desenvolvimento dentro de um container. Ao rodá-lo dentro da IDE do Rstudio, caso você esteja com acesso a internet, várias figuras serão geradas usando o famoso banco de dados Íris.  
+
+O segundo experimento, dentro da pasta python_mlflow, representa o versionamento de um experimento usando Python e [Mlflow](https://mlflow.org/). O código usa o banco de dados `wine-quality` contido na pasta data.
+Ao rodar o [experimento](https://github.com/mlflow/mlflow/tree/master/examples/sklearn_elasticnet_wine), métricas e parâmetros de um classificador serão armazenadas na pasta `Experiments` (atenção, se você mudou o nome de usuário, atualize o caminho da URI de tracking no código com o novo nome), juntamente com um arquivo pkl contendo o modelo. Para visualizá-los na URI do Mlflow, basta ir até `localhost:5000` e atualizar a página.
+
+O terceiro experimento é feito na linguagem R e demonstra o uso de DAGs e cache usando o framework [Drake](https://ropenscilabs.github.io/drake-manual/). O código make.R cria um cache, carrega funções, banco de dados e plano de trabalho que, após ser executado, tem como saída um reporte na pasta Reports. Para visualizar o DAG gerado, retire o # da linha 26 e rode o código de forma iterativa (numa sessão do Rstudio, p.e.). Isso gerará um gráfico de dependências do código.
+
+
+
 
 
 

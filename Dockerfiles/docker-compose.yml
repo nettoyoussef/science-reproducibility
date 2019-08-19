@@ -15,7 +15,7 @@ services:
     environment:
       - JUPYTER_TOKEN=${JUPYTER_PASSWORD}
     command:
-      jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root --notebook-dir=/home/science-repro
+      jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root --notebook-dir=/home/${LOGIN_USER}/
             
 
 # container for Mlflow 

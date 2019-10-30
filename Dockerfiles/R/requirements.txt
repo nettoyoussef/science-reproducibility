@@ -27,7 +27,7 @@ olefile==0.46
 pandas==0.24.2
 pep8==1.7.1
 pickleshare==0.7.5
-pillow==6.1.0
+pillow==6.2.0
 pip==19.1.1
 pkginfo==1.5.0.1
 pluggy==0.12.0

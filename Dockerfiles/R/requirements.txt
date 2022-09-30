@@ -18,7 +18,7 @@ future==0.17.1
 gevent==1.4.0
 glob2==0.7
 h5py==2.9.0
-joblib==0.13.2
+joblib==1.2.0
 matplotlib==3.0.3
 mpmath==1.1.0
 nltk==3.4.5
